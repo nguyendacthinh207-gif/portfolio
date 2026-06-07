@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio – Nguyễn Đắc Thịnh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+
+    :root{
+      --cream:#f5f0e8;
+      --ink:#1a1612;
+      --red:#d4351c;
+      --warm:#e8dfc8;
+      --mid:#8c7b6b;
+      --light:#ede8de;
+    }
+
+    body{
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Instrument Sans', sans-serif;
+      overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── TOP BAR ─── */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1.1rem 2.5rem;
+      border-bottom:2px solid var(--ink);
+      position:sticky;top:0;z-index:100;
+      background:var(--cream);
+    }
+    .topbar-left{
+      font-size:.65rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    .topbar-nav{display:flex;gap:2rem}
+    .topbar-nav a{
+      font-size:.65rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:var(--mid);
+      font-weight:500;
+      transition:color .2s;
+    }
+    .topbar-nav a:hover{color:var(--red)}
+
+    /* ─── HERO ─── */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      border-bottom:2px solid var(--ink);
+      min-height:88vh;
+    }
+    .hero-left{
+      padding:4rem 3rem 3rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:2px solid var(--ink);
+    }
+    .hero-eyebrow{
+      font-size:.65rem;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--mid);
+      font-weight:600;
+      margin-bottom:auto;
+    }
+
+    /* ĐÃ FIX: Tăng line-height lên hẳn 1.2 và chỉnh size hợp lý để font chữ Serif có dấu Việt hiển thị đẹp xuất sắc */
+    .hero-name{
+      font-family:'Playfair Display', Georgia, serif;
+      font-size: clamp(3.8rem, 7.5vw, 6.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: normal;
+      margin: 2rem 0 1.5rem;
+    }
+    .hero-name span{
+      display:block;
+      color:var(--red);
+      font-style:italic;
+      font-weight:700;
+    }
+    .hero-desc{
+      max-width:520px;
+      font-size:1.05rem;
+      line-height:1.65;
+      color:#3d352c;
+      border-top:1px solid var(--ink);
+      padding-top:1.5rem;
+    }
+    .hero-right{
+      display:flex;
+      flex-direction:column;
+    }
+    .hero-issue{
+      padding:2rem;
+      border-bottom:2px solid var(--ink);
+      background:var(--ink);
+      color:var(--cream);
+    }
+    .hero-issue p{
+      font-size:.6rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      margin-bottom:.5rem;
+      opacity:.5;
+    }
+    .hero-issue h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.6rem;
+      font-weight:700;
+      line-height:1.2;
+    }
+    .hero-meta-list{flex:1;display:flex;flex-direction:column}
+    .meta-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      padding:1rem 2rem;
+      border-bottom:1px solid var(--warm);
+      gap:1rem;
+    }
+    .meta-row:last-child{border-bottom:none;margin-top:auto;background:var(--red);color:var(--cream);padding:1.5rem 2rem}
+    .meta-label{
+      font-size:.58rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--mid);
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .meta-row:last-child .meta-label{color:rgba(255,255,255,.7)}
+    .meta-val{
+      font-size:.85rem;
+      font-weight:600;
+      text-align:right;
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section-wrap{border-bottom:2px solid var(--ink)}
+
+    .section-header{
+      display:flex;
+      align-items:center;
+      gap:1.5rem;
+      padding:1.2rem 2.5rem;
+      border-bottom:2px solid var(--ink);
+      background:var(--light);
+    }
+    .section-num{
+      font-size:.6rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--red);
+      font-weight:600;
+      background:var(--red);
+      color:#fff;
+      padding:.3rem .6rem;
+    }
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;
+      font-weight:700;
+      letter-spacing:-.01em;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+    .about-quote{
+      padding:4rem 3rem;
+      border-right:2px solid var(--ink);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .about-quote blockquote{
+      font-family:'Playfair Display',serif;
+      font-size:1.9rem;
+      font-weight:400;
+      font-style:italic;
+      line-height:1.4;
+      color:var(--ink);
+    }
+    .about-quote blockquote::before{
+      content:'"';
+      font-size:6rem;
+      line-height:.6;
+      color:var(--red);
+      display:block;
+      margin-bottom:.5rem;
+      font-style:normal;
+    }
+    .about-quote cite{
+      display:block;
+      margin-top:2rem;
+      font-size:.7rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--mid);
+      font-style:normal;
+      font-weight:600;
+    }
+    .about-bio{
+      padding:4rem 3rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:1.5rem;
+    }
+    .about-bio h4{
+      font-size:.65rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--red);
+      font-weight:600;
+    }
+    .about-bio p{
+      font-size:1rem;
+      line-height:1.7;
+      color:#3d352c;
+    }
+
+    /* ─── PROJECTS MASTHEAD ─── */
+    .projects-masthead{
+      padding:2.5rem 3rem;
+      background:var(--ink);
+      color:var(--cream);
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      border-bottom:2px solid var(--ink);
+    }
+    .projects-masthead h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.5rem,5vw,5rem);
+      font-weight:900;
+      line-height:.95;
+      letter-spacing:-.03em;
+    }
+    .projects-masthead h2 em{font-style:italic;color:var(--red)}
+    .projects-masthead p{
+      max-width:280px;
+      font-size:.8rem;
+      line-height:1.6;
+      color:rgba(245,240,232,.6);
+      text-align:right;
+    }
+
+    /* ─── PROJ DETAIL ─── */
+    .proj-detail{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      border-top:2px solid var(--ink);
+    }
+    .proj-detail:first-child{border-top:none}
+    .proj-detail-side{
+      padding:3rem 2.5rem;
+      border-right:2px solid var(--ink);
+      background:var(--light);
+      display:flex;
+      flex-direction:column;
+      gap:1.2rem;
+    }
+    .proj-detail-num{
+      font-size:.58rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--red);
+      font-weight:600;
+    }
+    .proj-detail-side h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;
+      font-weight:700;
+      line-height:1.2;
+    }
+    .proj-detail-tag{
+      display:inline-block;
+      font-size:.55rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      font-weight:600;
+      border:1px solid rgba(26,22,18,.25);
+      padding:.3rem .65rem;
+      color:var(--mid);
+      width:fit-content;
+    }
+    .proj-detail-body{
+      padding:3rem;
+      display:flex;
+      flex-direction:column;
+      gap:2rem;
+    }
+    .proj-detail-body p{
+      font-size:.92rem;
+      line-height:1.75;
+      color:#3d352c;
+    }
+    .proj-what{display:flex;flex-direction:column;gap:.8rem}
+    .proj-what-label{
+      font-size:.58rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-weight:600;
+      color:var(--mid);
+    }
+    .proj-what-label.highlight{color:var(--red)}
+    .proj-outcome{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:1px;
+      background:var(--warm);
+      border-top:1px solid var(--warm);
+      border-bottom:1px solid var(--warm);
+    }
+    .outcome-cell{
+      background:var(--cream);
+      padding:1rem 1.2rem;
+    }
+    .outcome-cell .o-label{
+      font-size:.55rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--mid);
+      font-weight:600;
+      margin-bottom:.35rem;
+    }
+    .outcome-cell .o-val{
+      font-size:.82rem;
+      font-weight:600;
+      color:var(--ink);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      border-top:2px solid var(--ink);
+    }
+    .footer-left{
+      padding:4rem 3rem;
+      border-right:2px solid var(--ink);
+    }
+    .footer-left h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3rem,6vw,6rem);
+      font-weight:900;
+      line-height:.95;
+      letter-spacing:-.03em;
+      margin-bottom:2rem;
+    }
+    .footer-left h2 em{font-style:italic;color:var(--red)}
+    .colophon{
+      border-top:2px solid var(--ink);
+      padding:1.2rem 2.5rem;
+      display:flex;
+      justify-content:space-between;
+      background:var(--ink);
+      color:var(--cream);
+    }
+    .colophon p{
+      font-size:.55rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      opacity:.45;
+    }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+    .rv.show{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .topbar-nav{display:none}
+      .hero{grid-template-columns:1fr}
+      .hero-right{display:none}
+      .about-grid,.skills-layout,.footer{grid-template-columns:1fr}
+      .about-quote{border-right:none;border-bottom:2px solid var(--ink)}
+      .footer-left{border-right:none;border-bottom:2px solid var(--ink)}
+      .projects-masthead{flex-direction:column;align-items:flex-start;gap:1rem}
+      .projects-masthead p{text-align:left}
+      .proj-detail{grid-template-columns:1fr}
+      .proj-detail-side{border-right:none;border-bottom:2px solid var(--ink)}
+      .proj-outcome{grid-template-columns:1fr 1fr}
+      .hero-name{font-size:clamp(3rem,14vw,6.5rem); line-height: 1.15;}
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">Portfolio Kỹ Thuật Số · 2026</div>
+  <nav class="topbar-nav">
+    <a href="#about">Giới thiệu</a>
+    <a href="#projects">Bài tập</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nhập môn Công nghệ số &amp; Ứng dụng Trí tuệ nhân tạo</div>
+    <div>
+      <h1 class="hero-name">
+        Nguyễn Đắc Thịnh
+        <span>Portfolio.</span>
+      </h1>
+      <p class="hero-desc">
+        Tổng hợp và thể hiện kiến thức, kỹ năng đã học — một nền tảng số để lưu giữ hành trình học tập và định hướng phát triển cá nhân trong tương lai.
+      </p>
+    </div>
+  </div>
+  <aside class="hero-right">
+    <div class="hero-issue">
+      <p>Môn học</p>
+      <h3>Nhập môn<br/>Công nghệ số<br/>&amp; UDTTNT</h3>
+    </div>
+    <div class="hero-meta-list">
+      <div class="meta-row">
+        <span class="meta-label">Họ tên</span>
+        <span class="meta-val">Nguyễn Đắc Thịnh</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">MSSV</span>
+        <span class="meta-val">25022019</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Lớp</span>
+        <span class="meta-val">K70I-CS6</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Trường</span>
+        <span class="meta-val">Trường Đại học Công nghệ - ĐHQGHN</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Năm học</span>
+        <span class="meta-val">2025 – 2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Nền tảng</span>
+        <span class="meta-val">Google Sites</span>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="section-wrap" id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Giới thiệu bản thân</span>
+  </div>
+  <div class="about-grid">
+    <div class="about-quote rv">
+      <blockquote>
+        Mục tiêu của Portfolio này là thể hiện các kỹ năng đã học, lưu trữ sản phẩm cá nhân để dễ dàng truy cập và chia sẻ.
+      </blockquote>
+      <cite>— Mục tiêu Portfolio cá nhân</cite>
+    </div>
+    <div class="about-bio rv">
+      <h4>Định hướng &amp; Mục tiêu học tập</h4>
+      <p>Là một sinh viên ngành Khoa học Máy tính tại UET, tôi tập trung phát triển tư duy thuật toán vững chắc, kết hợp nghiên cứu toán học rời rạc và cấu trúc dữ liệu để làm nền tảng sâu cho mảng Phát triển phần mềm và Trí tuệ nhân tạo.</p>
+      <p>Trang Portfolio này vừa là nơi ghi lại các cột mốc hoàn thành bài tập trong môn học, vừa là không gian số để tôi hệ thống hóa kiến thức phục vụ cho các dự án nghiên cứu và kỹ thuật sau này.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap" id="projects">
+  <div class="projects-masthead rv">
+    <h2>Bài tập<br/><em>thành phần</em></h2>
+    <p>6 bài tập được hoàn thiện qua từng mục học — mỗi bài là một sản phẩm độc lập, đầy đủ và có thể trình bày.</p>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 01 · Mục 1.4</div>
+      <h3>Máy tính và thiết bị ngoại vi</h3>
+      <span class="proj-detail-tag">File &amp; Folder</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Xây dựng hệ thống tổ chức tệp tin cá nhân trên máy tính theo cấu trúc thư mục khoa học, áp dụng các quy tắc đặt tên tệp rõ ràng và nhất quán để dễ tra cứu về sau.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Thiết kế cấu trúc thư mục phân cấp theo năm học → môn học → loại tài liệu. Đặt tên tệp theo định dạng YYYYMMDD_TênMôn_NộiDung_v1. Chụp ảnh minh họa toàn bộ cây thư mục và giải thích lý do lựa chọn cấu trúc này.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">Công cụ</div><div class="o-val">Windows Explorer</div></div>
+        <div class="outcome-cell"><div class="o-label">Kỹ năng</div><div class="o-val">Quản lý tệp tin cá nhân</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1YLwfppUoDDLlaOzX3sS-SYcrpFaaQser/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem báo cáo PDF →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 02 · Mục 2.4</div>
+      <h3>Khai thác dữ liệu và thông tin</h3>
+      <span class="proj-detail-tag">Search &amp; Evaluate</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Thực hành tìm kiếm thông tin học thuật chuyên sâu trên các nền tảng như Google Scholar, Semantic Scholar, và các cơ sở dữ liệu khoa học. Biết cách đánh giá độ tin cậy của nguồn thông tin tìm được.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Sử dụng toán tử tìm kiếm nâng cao (AND, OR, NOT, dấu ngoặc kép, site:) để lọc kết quả chính xác. Xây dựng bảng đánh giá nguồn tin dựa trên tiêu chí CRAAP (Currency, Relevance, Authority, Accuracy, Purpose). So sánh kết quả từ ít nhất 3 nguồn khác nhau cho cùng một chủ đề.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">Nền tảng</div><div class="o-val">Google Scholar</div></div>
+        <div class="outcome-cell"><div class="o-label">Tiêu chí</div><div class="o-val">CRAAP Evaluated</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1mpLBqTH9Vpom6KFLlRDViANrd2RTZbAV/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem bảng đánh giá →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 03 · Mục 3.4</div>
+      <h3>Viết Prompt hiệu quả cho AI</h3>
+      <span class="proj-detail-tag">Prompt Engineering</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Nghiên cứu và thực hành kỹ thuật viết Prompt hiệu quả để giao tiếp với các mô hình ngôn ngữ lớn (LLM) như ChatGPT, Gemini, Claude. So sánh chất lượng đầu ra giữa Prompt đơn giản và Prompt được tối ưu hóa có cấu trúc.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Xây dựng cùng một yêu cầu theo hai cách: Prompt thô (ban đầu) và Prompt cải tiến (áp dụng kỹ thuật role-prompting, few-shot, chain-of-thought). Chạy thực nghiệm trên ít nhất 2 mô hình AI khác nhau. Lập bảng so sánh đầu ra theo các tiêu chí: độ chính xác, mức độ chi tiết, khả năng sử dụng ngay.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">Công cụ AI</div><div class="o-val">ChatGPT, Gemini, Claude</div></div>
+        <div class="outcome-cell"><div class="o-label">Kỹ thuật</div><div class="o-val">Role / Few-shot / CoT</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1mOwItxw4BFPeazOU2PiOok88gkG2Osid/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem phân tích Prompt →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 04 · Mục 4.4</div>
+      <h3>Giao tiếp và hợp tác trong môi trường số</h3>
+      <span class="proj-detail-tag">Collaboration</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Thực hành sử dụng các công cụ quản lý dự án và cộng tác nhóm trực tuyến để hoàn thành một dự án nhỏ. Minh chứng khả năng phối hợp, giao tiếp và phân công công việc hiệu quả trong môi trường số.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Sử dụng Trello / Notion để tạo bảng quản lý công việc phân chia cho từng thành viên nhóm. Ghi lại lịch sử hoạt động nhóm qua các buổi họp online (Google Meet, Zoom). Xuất báo cáo tiến độ dự án và tài liệu chia sẻ trên Google Drive.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">Quản lý</div><div class="o-val">Trello / Notion / Drive</div></div>
+        <div class="outcome-cell"><div class="o-label">Họp nhóm</div><div class="o-val">Google Meet / Zoom</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1D042VTQ_TNe50LbZjd6Tk-WZDiGz3aVn/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem báo cáo nhóm →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 05 · Mục 5.4</div>
+      <h3>Sáng tạo nội dung với AI</h3>
+      <span class="proj-detail-tag">AI-Generated Content</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Ứng dụng công cụ AI để hỗ trợ quá trình sáng tạo nội dung số — bao gồm hình ảnh, video ngắn hoặc bài viết. Học cách kết hợp sáng tạo cá nhân với khả năng của AI để tạo ra sản phẩm hoàn chỉnh.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Lên ý tưởng và xây dựng kịch bản nội dung trước khi sử dụng AI. Dùng Midjourney / DALL-E để tạo hình ảnh minh họa theo Prompt tự viết. Dùng ChatGPT / Claude để hỗ trợ viết nội dung bài đăng. Chỉnh sửa và hoàn thiện sản phẩm cuối.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">AI Image</div><div class="o-val">Midjourney / DALL-E</div></div>
+        <div class="outcome-cell"><div class="o-label">AI Text</div><div class="o-val">ChatGPT / Claude</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1TZXImWHdhSer_1xAWcBahmVaIgZyREID/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem sản phẩm AI →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-detail rv">
+    <div class="proj-detail-side">
+      <div class="proj-detail-num">Bài 06 · Mục 6.4</div>
+      <h3>An toàn và liêm chính học thuật</h3>
+      <span class="proj-detail-tag">Ethics &amp; Safety</span>
+    </div>
+    <div class="proj-detail-body">
+      <div class="proj-what">
+        <div class="proj-what-label">Mô tả bài tập</div>
+        <p>Nghiên cứu và xây dựng nguyên tắc sử dụng AI có trách nhiệm trong học tập và nghiên cứu. Nhận thức được các rủi ro về đạo đức, sở hữu trí tuệ và liêm chính học thuật khi sử dụng công cụ AI.</p>
+      </div>
+      <div class="proj-what">
+        <div class="proj-what-label highlight">Những gì đã thực hiện</div>
+        <p>Đọc và tổng hợp tài liệu về đạo đức AI trong giáo dục. Xây dựng bộ nguyên tắc cá nhân gồm 5–7 điều về cách sử dụng AI có trách nhiệm. Phân tích một tình huống thực tế liên quan đến vi phạm liêm chính học thuật khi dùng AI.</p>
+      </div>
+      <div class="proj-outcome">
+        <div class="outcome-cell"><div class="o-label">Tài liệu</div><div class="o-val">3+ Nghiên cứu</div></div>
+        <div class="outcome-cell"><div class="o-label">Nguyên tắc</div><div class="o-val">5-7 Điều cốt lõi</div></div>
+        <div class="outcome-cell" style="background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="o-label" style="color: rgba(245,240,232,0.6); margin-bottom: 2px;">Sản phẩm</div>
+          <div class="o-val">
+            <a href="https://drive.google.com/file/d/1ue3d851ej53iDMe3M-DJ3XPhABaTWrIx/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem bài phản nghị →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="colophon">
+  <p>© 2026 — Nguyễn Đắc Thịnh · Portfolio Kỹ thuật số</p>
+  <p>Nhập môn Công nghệ số &amp; Ứng dụng Trí tuệ nhân tạo</p>
+</div>
+
+<script>
+  const els = document.querySelectorAll('.rv');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('show'), i*60);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
