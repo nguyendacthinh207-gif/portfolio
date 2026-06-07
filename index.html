@@ -388,6 +388,113 @@
     .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
     .rv.show{opacity:1;transform:none}
 
+    /* ─── TỔNG KẾT ─── */
+    .tk-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+    .tk-block{
+      padding:3.5rem 3rem;
+      border-right:2px solid var(--ink);
+      display:flex;
+      flex-direction:column;
+      gap:1.4rem;
+    }
+    .tk-block--alt{
+      border-right:none;
+      background:var(--light);
+    }
+    .tk-block-label{
+      font-size:.58rem;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-weight:600;
+      color:var(--mid);
+    }
+    .tk-block-title{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      font-weight:700;
+      line-height:1.15;
+    }
+    .tk-block-title em{font-style:italic;color:var(--red)}
+    .tk-block p{
+      font-size:.9rem;
+      line-height:1.75;
+      color:#3d352c;
+    }
+    .tk-skill-list{display:flex;flex-direction:column;gap:.9rem;margin-top:.4rem}
+    .tk-skill-item{
+      display:flex;
+      align-items:flex-start;
+      gap:.9rem;
+      font-size:.88rem;
+      line-height:1.6;
+      color:#3d352c;
+    }
+    .tk-skill-dot{
+      width:6px;height:6px;
+      border-radius:50%;
+      background:var(--red);
+      margin-top:.45rem;
+      flex-shrink:0;
+    }
+    .tk-band{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-top:2px solid var(--ink);
+    }
+    .tk-band-col{
+      padding:3rem;
+      border-right:2px solid var(--ink);
+      display:flex;
+      flex-direction:column;
+      gap:1.2rem;
+    }
+    .tk-band-col:last-child{border-right:none}
+    .tk-band-col--dark{background:var(--ink);color:var(--cream)}
+    .tk-band-col--dark .tk-block-label{color:var(--red)}
+    .tk-band-quote{
+      font-family:'Playfair Display',serif;
+      font-size:1.15rem;
+      font-style:italic;
+      line-height:1.5;
+      color:var(--cream);
+      border-left:3px solid var(--red);
+      padding-left:1rem;
+    }
+    .tk-band-body{
+      font-size:.85rem;
+      line-height:1.7;
+      color:rgba(245,240,232,.65);
+    }
+    .tk-challenge-list{display:flex;flex-direction:column;gap:1.4rem}
+    .tk-challenge-item{
+      display:grid;
+      grid-template-columns:32px 1fr;
+      gap:1rem;
+      align-items:flex-start;
+    }
+    .tk-challenge-num{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;
+      font-weight:900;
+      color:var(--warm);
+      line-height:1;
+      margin-top:.1rem;
+    }
+    .tk-challenge-item strong{
+      display:block;
+      font-size:.85rem;
+      font-weight:600;
+      margin-bottom:.3rem;
+    }
+    .tk-challenge-item p{
+      font-size:.8rem;
+      line-height:1.65;
+      color:var(--mid);
+    }
+
     @media(max-width:900px){
       .topbar-nav{display:none}
       .hero{grid-template-columns:1fr}
@@ -401,6 +508,10 @@
       .proj-detail-side{border-right:none;border-bottom:2px solid var(--ink)}
       .proj-outcome{grid-template-columns:1fr 1fr}
       .hero-name{font-size:clamp(3rem,14vw,6.5rem); line-height: 1.15;}
+      .tk-grid,.tk-band{grid-template-columns:1fr}
+      .tk-block{border-right:none;border-bottom:2px solid var(--ink)}
+      .tk-band-col{border-right:none;border-bottom:2px solid var(--ink)}
+      .tk-band-col:last-child{border-bottom:none}
     }
   </style>
 </head>
@@ -411,6 +522,7 @@
   <nav class="topbar-nav">
     <a href="#about">Giới thiệu</a>
     <a href="#projects">Bài tập</a>
+    <a href="#tong-ket">Tổng kết</a>
   </nav>
 </header>
 
@@ -452,10 +564,6 @@
       <div class="meta-row">
         <span class="meta-label">Năm học</span>
         <span class="meta-val">2025 – 2026</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Nền tảng</span>
-        <span class="meta-val">Google Sites</span>
       </div>
     </div>
   </aside>
@@ -650,6 +758,59 @@
           <div class="o-val">
             <a href="https://drive.google.com/file/d/1ue3d851ej53iDMe3M-DJ3XPhABaTWrIx/view?usp=drive_link" target="_blank" style="color: var(--cream); text-decoration: underline; font-size: 0.82rem; font-weight: 600;">Xem bài phản nghị →</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TỔNG KẾT -->
+<div class="section-wrap" id="tong-ket">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">Tổng kết</span>
+  </div>
+
+  <div class="tk-grid">
+    <div class="tk-block rv">
+      <div class="tk-block-label">Trải nghiệm &amp; Cảm nhận</div>
+      <h3 class="tk-block-title">Hành trình<br/><em>xây dựng Portfolio</em></h3>
+      <p>Quá trình thực hiện dự án Portfolio là lần đầu tiên tôi thực sự hệ thống hóa những gì đã học thay vì chỉ hoàn thành từng bài rời rạc. Việc phải trình bày lại từng sản phẩm một cách mạch lạc, có cấu trúc giúp tôi nhận ra những điểm còn thiếu sót và chủ động bổ sung.</p>
+      <p>Xây dựng một trang Portfolio cá nhân từ đầu cũng là một trải nghiệm thực tế đáng giá: từ chọn bố cục, sắp xếp nội dung đến đảm bảo đường link hoạt động đúng.</p>
+    </div>
+    <div class="tk-block tk-block--alt rv">
+      <div class="tk-block-label">Kiến thức &amp; Kỹ năng nổi bật</div>
+      <h3 class="tk-block-title">Những gì<br/><em>quan trọng nhất</em></h3>
+      <div class="tk-skill-list">
+        <div class="tk-skill-item"><span class="tk-skill-dot"></span><span>Biết cách tổ chức tệp tin khoa học, tiết kiệm thời gian tra cứu về sau</span></div>
+        <div class="tk-skill-item"><span class="tk-skill-dot"></span><span>Thành thạo tìm kiếm học thuật và đánh giá nguồn tin theo tiêu chí CRAAP</span></div>
+        <div class="tk-skill-item"><span class="tk-skill-dot"></span><span>Nắm được kỹ thuật viết Prompt có cấu trúc để khai thác AI hiệu quả hơn</span></div>
+        <div class="tk-skill-item"><span class="tk-skill-dot"></span><span>Có ý thức rõ ràng về liêm chính học thuật khi sử dụng công cụ AI</span></div>
+        <div class="tk-skill-item"><span class="tk-skill-dot"></span><span>Bước đầu biết cách trình bày và chia sẻ sản phẩm học tập dưới dạng số</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tk-band rv">
+    <div class="tk-band-col tk-band-col--dark">
+      <div class="tk-block-label">Điểm tâm đắc nhất</div>
+      <p class="tk-band-quote">"Prompt Engineering không phải kỹ thuật khó — nó là kỹ năng tư duy và diễn đạt."</p>
+      <p class="tk-band-body">Bài tập viết Prompt giúp tôi nhận ra rằng chất lượng đầu ra của AI phụ thuộc rất lớn vào cách đặt câu hỏi. Đây là kỹ năng tôi sẽ tiếp tục rèn luyện và áp dụng xuyên suốt quá trình học tập.</p>
+    </div>
+    <div class="tk-band-col">
+      <div class="tk-block-label">Thách thức gặp phải</div>
+      <div class="tk-challenge-list">
+        <div class="tk-challenge-item">
+          <span class="tk-challenge-num">01</span>
+          <div><strong>Quản lý thời gian</strong><p>Hoàn thiện cả 6 bài song song với các môn khác đòi hỏi lập kế hoạch rõ ràng hơn tôi dự kiến.</p></div>
+        </div>
+        <div class="tk-challenge-item">
+          <span class="tk-challenge-num">02</span>
+          <div><strong>Đánh giá nguồn tin</strong><p>Phân biệt nguồn học thuật đáng tin với nội dung phổ thông trên internet là thách thức thực sự, cần nhiều thực hành hơn.</p></div>
+        </div>
+        <div class="tk-challenge-item">
+          <span class="tk-challenge-num">03</span>
+          <div><strong>Trình bày rõ ràng</strong><p>Diễn đạt quá trình thực hiện súc tích, có cấu trúc — không quá dài mà vẫn đủ nội dung — là kỹ năng tôi cần cải thiện.</p></div>
         </div>
       </div>
     </div>
